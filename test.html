@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Draw Arrowed Line</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+
+        // Function to draw an arrowed line between two points
+        function drawArrowedLine(startX, startY, endX, endY) {
+            // Draw the line
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.stroke();
+
+            // Calculate the angle of the line
+            var angle = Math.atan2(endY - startY, endX - startX);
+
+            // Draw arrowhead
+            ctx.beginPath();
+            ctx.moveTo(endX, endY);
+            ctx.lineTo(endX - 10 * Math.cos(angle - Math.PI / 6), endY - 10 * Math.sin(angle - Math.PI / 6));
+            ctx.lineTo(endX - 10 * Math.cos(angle + Math.PI / 6), endY - 10 * Math.sin(angle + Math.PI / 6));
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        // Example coordinates
+        var startX = 50;
+        var startY = 50;
+        var endX = 200;
+        var endY = 200;
+
+        // Call the function to draw the arrowed line
+        drawArrowedLine(startX, startY, endX, endY);
+    </script>
+</body>
+</html>
