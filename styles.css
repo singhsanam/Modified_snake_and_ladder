@@ -6,6 +6,7 @@
     width: 35vmin;
     border: 0.2vmin solid black;
     background-color: lightgreen;
+    opacity: 0.7;
     text-align: center;
     font-size: 3.5vmin;
 }
@@ -72,7 +73,7 @@ body{
 
 
 #main{
-    position: absolute;
+    position: relative;
     margin: auto;
     top: 0;
     left: 0;
@@ -138,7 +139,7 @@ background-color: blue;
 #l2{
     transform: scaleX(0.15) scaleY(0.2) rotate(31deg);
     top: 24.5vmin;
-    left: 9.7vmin;
+    left: 0vmin;
 }
 
 #l3{
@@ -189,6 +190,15 @@ background-color: blue;
     left: 34.2vmin;
 }
 
+#l11{
+    /* position: absolute; */
+    transform: scaleX(0.18) scaleY(0.65) rotate(10deg);
+    z-index: 5;
+    top: 17.2vmin;
+    left: 10vmin;
+}
+
+
 #s1{
     transform: scaleX(0.3) scaleY(0.3) rotate(5deg);
     top:-1vmin;
@@ -198,7 +208,7 @@ background-color: blue;
 
 #s2{
     transform: scaleX(0.18) scaleY(0.18);
-    top: 4.3vmin;
+    top: 14.3vmin;
     left: -29.4vmin;    
 
 }
@@ -244,6 +254,18 @@ background-color: blue;
     left: 41.2vmin;    
 
 }
+
+#s9{
+    transform: scaleX(-0.14) scaleY(1) rotate(0deg);
+    top: -13vmin;
+    left: -34vmin;    
+
+}
 #myCanvas{
     position: absolute;
+}
+
+#boardCanvas{
+    position: absolute;
+    z-index: 10;
 }
