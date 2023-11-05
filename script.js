@@ -317,7 +317,7 @@ async function drawArrow(path){
         const start = positionToCanvasPoint(path[i]);
         const end = positionToCanvasPoint(path[i + 1]);
         drawArrowEach(start.x, start.y, end.x, end.y);
-        await sleep(300);
+        await sleep(250);
     }
 }
 
