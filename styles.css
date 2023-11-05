@@ -2,16 +2,17 @@
     position: absolute;
     top: 1vmin;
     left: 1vmin;
-    height: 25vmin;
+    height: 30vmin;
     width: 35vmin;
     border: 0.2vmin solid black;
     background-color: lightgreen;
-    opacity: 0.7;
+    opacity: 0.6;
     text-align: center;
     font-size: 3.5vmin;
 }
 
 #cube_outer{
+    z-index: 2;
     height: 8vmin;
     width: 8vmin;
     perspective: 30vmin;

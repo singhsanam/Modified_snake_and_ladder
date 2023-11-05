@@ -34,7 +34,9 @@ document.addEventListener('keydown', async (e) => {
         }
     }
 });
-document.getElementById('cube_outer').addEventListener('click', async() => click_dice());
+
+document.getElementById('main').addEventListener('click', async() => click_dice());
+
 async function click_dice(){
     if(!stopEvent){
         stopEvent = true;
