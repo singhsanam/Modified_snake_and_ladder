@@ -81,7 +81,7 @@ body{
     right: 0;
     bottom: 0;
     border: 0.1vmin solid black;
-    height: 98vmin;
+    height: 98.35vmin;
     width: 98.35vmin;
 }
 .box{
@@ -89,11 +89,11 @@ body{
     /* margin: 0px 0px; */
     /* padding: 0px 0px; */
     /* display: inline-block; */
-    height: 9.601vmin;
-    width: 9.601vmin;
-    border: 0.1vmin solid black;
+    height: 9.60vmin;
+    width: 9.60vmin;
+    border: 0.05vmin solid black;
     text-align: center;
-    line-height: 9.601vmin;
+    line-height: 9.60vmin;
     font-size: 2.5vmin;
     background-color: lightgreen;
 }
@@ -111,27 +111,34 @@ body{
 }
 
 #command{
-position: absolute;
-/* background-color: rgb(177, 163, 192); */
-/* border:2px solid rgb(96, 96, 91); */
-margin-top: 2vmin;
-margin-left: 5vmin;
+    position: absolute;
+    /* background-color: rgb(177, 163, 192); */
+    /* border:2px solid rgb(96, 96, 91); */
+    margin-top: 2vmin;
+    margin-left: 5vmin;
 }
 
-
-.players:nth-child(1){
-background-color: red;
+#blue{
+    background-color: blue;
 }
-
-.players:nth-child(2){
-background-color: blue;
+#red{
+    background-color: red;
 }
 
 #main img{
     position: absolute;
 }
 
+#l0{
+    /* position: absolute; */
+    transform: scaleX(0) scaleY(0) rotate(31deg);
+    top: 34.3vmin;
+    left: -29.5vmin;
+}
+
 #l1{
+
+    /* position: absolute; */
     transform: scaleX(0.15) scaleY(0.2) rotate(31deg);
     top: 34.3vmin;
     left: -29.5vmin;

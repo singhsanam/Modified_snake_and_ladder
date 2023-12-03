@@ -2,17 +2,18 @@
 let turn = 'red'
 let stopEvent = false
 let diceNum;
-
+let temp=1;//all types of delays halt
 let froms = []
 let tos = []
 document.getElementById('red').style.transform = `0vmin`
-document.getElementById('red').style.transform = `0vmin`
-document.getElementById('blue').style.transform = `0vmin`
 document.getElementById('blue').style.transform = `0vmin`
 
+document.getElementById('main').addEventListener('click', async() => temp=0);
+document.addEventListener('keydown', async (e) => temp=0);
+
+document.getElementById(`${turn}`).style.zIndex = 1;
 
 document.addEventListener('keydown', async (e) => {
-
     if (e.key === "Enter" && !stopEvent) {
         stopEvent = true;
         diceNum = await roll();
@@ -50,6 +51,7 @@ async function click_dice(){
 
         let wonBy = checkWin();
         if (wonBy == 'none') {
+            document.getElementById(`${turn}`).style.zIndex = 0;
             changeTurn();
 
             let currentPosition = coordinatesToPosition()
@@ -63,12 +65,16 @@ async function click_dice(){
 
 
 async function roll() {
+    temp=1;
+    document.getElementById('cube_inner').style.transition = `all ${0.75*temp}s linear`;
     let diceNum = Math.floor(Math.random() * 6) + 1;
     
     let values = [[0, -360], [-180, -360], [-180, 270], [0, -90], [270, 180], [90, 90]];
     new Audio('./images/diceRoll.mp3').play();
     document.getElementById('cube_inner').style.transform = `rotateX(360deg) rotateY(360deg)`;
-    await sleep(750);  // Wait for the dice animation to complete
+    await sleep(750*temp);  // Wait for the dice animation to complete
+    document.getElementById('cube_inner').style.transition = `all ${0.75*temp}s linear`;
+    
     document.getElementById('cube_inner').style.transform = `rotateX(${values[diceNum - 1][0]}deg) rotateY(${values[diceNum - 1][1]}deg)`;
     return diceNum;
 }
@@ -91,10 +97,11 @@ function marginTop(){
 }
 
 async function run(diceNum){
+    temp=1;
     for(let i=1; i<=diceNum; i++){
         let direction = getDirection();
         move(direction);
-        await sleep(400); // This will create a delay of 500ms (0.5 seconds) between each move.
+        await sleep(400*temp); // This will create a delay of 400ms (0.4 seconds) between each move.
     }
 }
 
@@ -115,6 +122,7 @@ function move(direction)
 }    
 async function checkLadderAndSnake()
 {
+    
 
     for(let i=0;i<tos.length;i++){
         if(marginLeft()==froms[i][0] && marginTop()==froms[i][1]){
@@ -124,7 +132,7 @@ async function checkLadderAndSnake()
             document.querySelector(`#${turn}`).style.marginTop = `${tos[i][1]}vmin`
         }    
     }   
-    await sleep(400); 
+    await sleep(400*temp); 
 }    
 function checkWin(){
     
@@ -153,7 +161,7 @@ function sleep(ms) {
 
 
 function getDirection(){
-    let direction
+    let direction;
     if(marginLeft()==88.2 && ((((marginTop()*10)%(-19.6*10)/10)==0))||(marginLeft()==0 && ((((marginTop()*10)%(-19.6*10))/10!=0)))){
         direction = 'up'
     }    
@@ -313,11 +321,16 @@ function clearCanvas() {
 }
 async function drawArrow(path){
     clearCanvas();
+    temp=1;
     for (let i = 0; i < path.length - 1; i++) {
         const start = positionToCanvasPoint(path[i]);
         const end = positionToCanvasPoint(path[i + 1]);
         drawArrowEach(start.x, start.y, end.x, end.y);
-        await sleep(250);
+        // document.getElementById('main').addEventListener('click', async() => temp=0);
+        // document.addEventListener('keydown', async (e) => temp=0);
+        await sleep(250*temp);
+        // document.getElementById('main').addEventListener('click', async() => temp=0);
+        // document.addEventListener('keydown', async (e) => temp=0);
     }
 }
 
