@@ -1,5 +1,7 @@
 #side{
     position: absolute;
+    z-index: 3;
+    /* display: block; */
     top: 1vmin;
     left: 1vmin;
     height: 30vmin;
@@ -74,7 +76,8 @@ body{
 
 
 #main{
-    position: relative;
+    position: absolute;
+    display: inline-block;
     margin: auto;
     top: 0;
     left: 0;
@@ -127,6 +130,7 @@ body{
 
 #main img{
     position: absolute;
+    z-index: 1;
 }
 
 #l0{
@@ -275,5 +279,47 @@ body{
 
 #boardCanvas{
     position: absolute;
-    z-index: 10;
+    z-index: 1;
+}
+button {
+    z-index: 15;
+    position: absolute;
+    padding: 1vmin 1vmin;
+    font-size: 3vmin;
+    background-color: #4CAF50; /* Set your button color */
+    color: white;
+    border: none;
+    border-radius: 2vmin;
+    top: 90vmin;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Set your button color on hover */
+}
+/* Add this to your existing styles.css or create a new one */
+
+.rules-container {
+    float: right;
+    display: block;
+    background-color: rgb(219, 218, 218);
+    border: 1vmin solid #ddd;
+    border-radius: 2vmin;
+    padding: 2vmin;
+    margin-top: 2vmin;
+    text-align: left;
+    box-shadow: 0 1vmin 2vmin rgba(0, 0, 0, 0.683);
+}
+
+.rules-container h2 {
+    color: #333;
+    font-size: 4vmin;
+    margin-bottom: 1vmin;
+}
+
+.rules-container p {
+    color: #555;
+    font-size: 2vmin;
+    width: 40vmin;
 }

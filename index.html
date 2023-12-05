@@ -10,26 +10,6 @@
 </head>
 <body>
 
-    <div id="main"> 
-        <div class="players" id="red"></div>
-        <div class="players" id="blue"></div>
-        <canvas id="boardCanvas"></canvas>
-        <script>
-            for (let i = 0; i < 11; i++) {
-                document.write(`<img src="/images/ladder.png" id="l${i}">`);
-            }
-        </script>
-        <img src="/images/ladder3.png" id="l11">
-        <script>
-            for (let i = 1; i < 10; i++) {
-                document.write(`<img src="./images/s${i}.png" id="s${i}">`);
-            }
-            for (let i = 0; i < 100; i++) {
-                document.write('<div class="box"></div>');
-            }
-        </script>
-    </div>
-
     <div id="side">
         <p id="p_turn">Red player's turn</p>
         <div id="cube_outer" >
@@ -43,10 +23,39 @@
             </div>
         </div>
 
-        <div id="command" class="command">
-            Press Enter or Click anywhere
+        <div id="command" class="command">Press Enter or Click on Board
         </div>
         
+    </div>
+    <div class="main" id="main"> 
+        <div class="players" id="red"></div>
+        <div class="players" id="blue"></div>
+        <canvas id="boardCanvas"></canvas>
+        <script>
+            for (let i = 1; i < 11; i++) {
+                document.write(`<img class="draggable" src="/images/ladder.png" id="l${i}">`);
+            }
+        </script>
+        <img class="draggable" src="/images/ladder3.png" id="l11">
+        <script>
+            for (let i = 1; i < 10; i++) {
+                if(i!=6)
+                document.write(`<img class="draggable" src="./images/s${i}.png" id="s${i}">`);
+            }
+            for (let i = 0; i < 100; i++) {
+                document.write('<div class="box"></div>');
+            }
+        </script>
+    </div>
+
+    <button id="startButton" onclick="started()">Start Game</button>
+    <div class="rules-container">
+        <h2>Game Rules</h2>
+        <p>On each move you will be shown the Shortest Path📈 to reach Destination</p>
+        <p>Before clicking on "<span style="background-color: #4CAF50; color: white;">Start Game</span>" You can Customize the positions of Snake and Ladders by dragging them.</p>
+        <p>No two elements are allowed to have the same starting point be it Snake🐉 or Ladder🪜 to avoid ambiguities</p>
+        <p>Once your game has started you will no longer have the freedom to reposition the Snakes🐉 and Ladders🪜.</p>
+        <p>Have Fun👻 by creating loops 🔂 using Snakes🐉 and Ladders🪜 .</p>
     </div>
 
 
