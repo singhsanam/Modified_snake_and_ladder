@@ -86,20 +86,17 @@ async function startDragging(event) {
         flag2 = 0;
     }
     if(!(target.id[0]=='l' || target.id[0]=='s')) return;
-    console.log(target.id);
     const computedStyle = getComputedStyle(target);
     const computedLeftValueInPixels = parseFloat(computedStyle.getPropertyValue('left'));
     // Assuming window.innerWidth is the width of the viewport in pixels
     const vminEquivalentLeft = (computedLeftValueInPixels / Math.min(window.innerWidth,window.innerHeight)) * 100;
     
     targetLeft = vminEquivalentLeft;
-    console.log(vminEquivalentLeft + 'vmin');
 
     const computedTopValueInPixels = parseFloat(computedStyle.getPropertyValue('top'));
     // Assuming window.innerWidth is the width of the viewport in pixels
     const vminEquivalentTop = (computedTopValueInPixels / Math.min(window.innerWidth,window.innerHeight)) * 100;
     targetTop = vminEquivalentTop;
-    console.log(vminEquivalentTop + 'vmin');
     temp_target = target.style;
 
     // Check if the clicked element has the 'draggable' class
@@ -180,8 +177,6 @@ async function drag(event) {
 
             target.style.left = X + 'vmin';
             target.style.top = Y + 'vmin';
-            console.log(LandSmap);
-            console.log(laddersAndSnakes);
 
             prevtemp1 = temp1;
             prevtemp2 = temp2;
@@ -193,7 +188,6 @@ async function drag(event) {
 
 function stopDragging() {
     if(turned == 0){
-    console.log(0);
     isDragging = false;
 
     delete laddersAndSnakes[LandSmap[target.id]];
