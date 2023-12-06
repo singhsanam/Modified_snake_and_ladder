@@ -84,8 +84,8 @@ body{
     right: 0;
     bottom: 0;
     border: 0.1vmin solid black;
-    height: 98.35vmin;
-    width: 98.35vmin;
+    height: 99.35vmin;
+    width: 99.35vmin;
 }
 .box{
     float: left;
@@ -127,12 +127,27 @@ body{
 #red{
     background-color: red;
 }
-
 #main img{
     position: absolute;
     z-index: 1;
 }
-
+#main img:hover{
+    background-color: white;
+    opacity: 0.4;
+    transition: background-color 0.3s ease; 
+    animation: shake 0.5s ease-in-out infinite;
+}
+.no-hover{
+    background-color: transparent !important;
+    opacity: 1 !important;
+    /* transition: background-color 0.3s ease;  */
+}
+.yes-hover{
+    background-color: white;
+    opacity: 0.4;
+    border-radius: 20%;
+    transition: background-color 0.3s ease; 
+}
 #l0{
     /* position: absolute; */
     transform: scaleX(0) scaleY(0) rotate(31deg);

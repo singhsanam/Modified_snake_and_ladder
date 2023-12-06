@@ -76,11 +76,20 @@ let flag = 1, flag3 = 0;
 // }
 let target;
 let flag2 = 1;
+let Elements = document.getElementsByClassName('draggable');
+let lock = false;
+
 async function startDragging(event) {
     if(turned == 0){
     event.preventDefault();
     if(flag2==1){
         target = event.target;
+        for (let i=0;i<Elements.length;i++){
+            if(Elements[i].id!=target.id){
+            Elements[i].classList.add('no-hover');
+            }
+        }
+        target.classList.add('yes-hover');
         new_Position = LandSmap[target.id];
         new_EndPosition = laddersAndSnakes[LandSmap[target.id]];
         flag2 = 0;
@@ -120,8 +129,8 @@ let prevtemp1 = -100, prevtemp2 = -100;
 async function changes(){
     delete laddersAndSnakes[LandSmap[target.id]];
     delete LandSmap[target.id];
-    laddersAndSnakes[newPosition] = newEndPosition;
-    LandSmap[target.id] = newPosition; 
+    laddersAndSnakes[new_Position] = new_EndPosition;
+    LandSmap[target.id] = new_Position;
 }
 function checking(starting){
     return ((starting.x>=0 && starting.x<=9) && (starting.y>=0 && starting.y<=9))
@@ -189,12 +198,13 @@ async function drag(event) {
 function stopDragging() {
     if(turned == 0){
     isDragging = false;
-
-    delete laddersAndSnakes[LandSmap[target.id]];
-    delete LandSmap[target.id];
-    
-    laddersAndSnakes[new_Position] = new_EndPosition;
-    LandSmap[target.id] = new_Position;
+    changes();
+    for (let i=0;i<Elements.length;i++){
+        if(Elements[i].id!=target.id){
+            Elements[i].classList.remove('no-hover');
+        }
+    }
+    target.classList.remove('yes-hover');
     flag2 = 1;
     }
 }
@@ -356,6 +366,7 @@ function checkWin(){
     }
     return 'none'
 }
+
 function changeTurn(){
     if(turn=='blue'){
         document.getElementById('p_turn').innerHTML = "Red Player's turn"
@@ -534,10 +545,13 @@ function started(){
     // console.log("turned on")
     let text = document.getElementById("startButton").innerHTML;
     if(text == "Start Game"){
-    document.getElementById("startButton").style.backgroundColor = "#800080";
-    boardGraph = generateBoardGraph();
-    turned = 1;
-    document.getElementById("startButton").innerHTML = "Reset Game";
+        document.getElementById("startButton").style.backgroundColor = "#800080";
+        boardGraph = generateBoardGraph();
+        turned = 1;
+        document.getElementById("startButton").innerHTML = "Reset Game";
+        for (let i=0;i<Elements.length;i++){
+            Elements[i].classList.add('no-hover');
+        }
     }
     else{
         location.reload();
