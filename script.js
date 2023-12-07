@@ -81,9 +81,10 @@ let lock = false;
 
 async function startDragging(event) {
     if(turned == 0){
-    event.preventDefault();
-    if(flag2==1){
-        target = event.target;
+        event.preventDefault();
+        if(flag2==1){
+            target = event.target;
+            if(!(target.id[0]=='l' || target.id[0]=='s')) return;
         for (let i=0;i<Elements.length;i++){
             if(Elements[i].id!=target.id){
             Elements[i].classList.add('no-hover');
@@ -94,7 +95,6 @@ async function startDragging(event) {
         new_EndPosition = laddersAndSnakes[LandSmap[target.id]];
         flag2 = 0;
     }
-    if(!(target.id[0]=='l' || target.id[0]=='s')) return;
     const computedStyle = getComputedStyle(target);
     const computedLeftValueInPixels = parseFloat(computedStyle.getPropertyValue('left'));
     // Assuming window.innerWidth is the width of the viewport in pixels
@@ -620,3 +620,14 @@ function positionToCanvasPoint(pos0) {
     y: (pos.y * size) * vmin + (size / 2) * vmin
   };
 }
+
+// for(var i = 0;i<5;i++){
+//     setTimeout(function(){
+//         console.log(i);
+//     },1000);
+// }
+// for(let i = 0;i<5;i++){
+//     setTimeout(function(){
+//         console.log(i);
+//     },1000);
+// }
